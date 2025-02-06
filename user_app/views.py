@@ -21,7 +21,7 @@ class LoginView(APIView):
         user = User.objects.filter(username=username).first()
         
         if not user:
-            return Response({'error': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'Invalid username or password'}, status=status.HTTP_400_BAD_REQUEST)
 
         if not user.is_active:
             return Response({"error": "Account is inactive. Please contact support."}, status=status.HTTP_400_BAD_REQUEST)
@@ -33,4 +33,4 @@ class LoginView(APIView):
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
             }, status=status.HTTP_200_OK)
-        return Response({'error': 'Wrong credentials'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid username or password'}, status=status.HTTP_400_BAD_REQUEST)
