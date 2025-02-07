@@ -149,3 +149,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  
     'https://ticket-management-frontend-three.vercel.app',    
 ]
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
