@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://ticket-management-frontend-three.vercel.app/']
+ALLOWED_HOSTS = ['https://ticket-management-frontend-three.vercel.app/', 'ticketmanagement-backend.onrender.com']
 
 
 # Application definition
