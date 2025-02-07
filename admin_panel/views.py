@@ -25,6 +25,7 @@ class AdminLoginView(APIView):
             refresh = RefreshToken.for_user(user)
 
             return Response({
+                'role':'admin',
                 'username': user.username,
                 'user_id': user.id,
                 'refresh': str(refresh),
