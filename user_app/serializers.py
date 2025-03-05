@@ -10,16 +10,18 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
     def validate(self, data):
         if data['password'] != data['confirm_password']:
-            raise serializers.ValidationError("Passwords do not match")
+            raise serializers.ValidationError({"confirm_password": "Passwords do not match"})
         if User.objects.filter(username=data['username']).exists():
-            raise serializers.ValidationError("Username already exists")
-        
+            raise serializers.ValidationError({"username": "Username already exists"})
+    
         return data
     def create(self, validated_data):
         validated_data.pop('confirm_password')
-
+        
         user = User.objects.create_user(
             username=validated_data['username'],
             password=validated_data['password']
         )
+        user.save()
+        print(user)
         return user
